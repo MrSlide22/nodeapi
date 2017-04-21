@@ -7,11 +7,16 @@ const mongoose = require('mongoose');
 // le pedimos a mongoose el modelo de agente
 const Agente = mongoose.model('Agente');
 
-const basicAuth = require('../../lib/basicAuth');
-router.use(basicAuth('admin', 'god'));
+const jwtAuth = require('../../lib/jwtAuth');
+router.use(jwtAuth);
+
+//const basicAuth = require('../../lib/basicAuth');
+// router.use(basicAuth('admin', 'god'));
 
 // GET /apiv1/agente
 router.get('/', (req, res, next) => {
+
+    console.log('usuario autenticado con _id:', req.usuario_id);
 
     // recogemos parametros de busqueda
     const name = req.query.name;

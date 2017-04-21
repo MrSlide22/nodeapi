@@ -35,7 +35,8 @@ router.post('/login', (req, res, next) => {
 
                 // Se lo devolvemos
                 res.json({ success: true, token: token });
-            });
+            }
+        );  
     });
 });
 
